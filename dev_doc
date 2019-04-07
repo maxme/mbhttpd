@@ -1,0 +1,33 @@
+Grammar
+=======
+
+Requests
+========
+       Full-Request   = Request-Line             ; Section 5.1
+                        *( General-Header        ; Section 4.3
+                         | Request-Header        ; Section 5.2
+                         | Entity-Header )       ; Section 7.1
+                        CRLF
+                        [ Entity-Body ]          ; Section 7.2
+
+       Full-Response  = Status-Line              ; Section 6.1
+                        *( General-Header        ; Section 4.3
+                         | Response-Header       ; Section 6.2
+                         | Entity-Header )       ; Section 7.1
+                        CRLF
+                        [ Entity-Body ]          ; Section 7.2
+
+       Simple-Request  = "GET" SP Request-URI CRLF
+
+       Simple-Response = [ Entity-Body ]
+
+Headers
+=======
+       HTTP-header    = field-name ":" [ field-value ] CRLF
+
+       field-name     = token
+       field-value    = *( field-content | LWS )
+
+       field-content  = <the OCTETs making up the field-value
+                        and consisting of either *TEXT or combinations
+                        of token, tspecials, and quoted-string>
